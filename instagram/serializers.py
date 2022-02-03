@@ -12,6 +12,5 @@ class PostSerializer(serializers.ModelSerializer):
             'username',
             'message',
             'is_public',
-            'created_at',
-            'updated_at',
+            'ip',
         ]
