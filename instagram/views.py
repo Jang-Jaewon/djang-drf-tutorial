@@ -1,6 +1,6 @@
-from crypt import methods
 from django.shortcuts import get_object_or_404
 
+from rest_framework.filters     import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework             import generics
 from rest_framework.generics    import RetrieveAPIView
@@ -19,6 +19,10 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadonly]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['message']
+    ordering_fields = ['id']
+    ordering = ['-id']
 
     def perform_create(self, serializer):
         author = self.request.user
