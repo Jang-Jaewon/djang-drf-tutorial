@@ -43,6 +43,7 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'core',
     'instagram',
+    'accounts',
 ]
 
 THIRD_PARTY_APPS = [
