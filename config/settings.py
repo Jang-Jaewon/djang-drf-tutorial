@@ -40,15 +40,15 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
+]
+
 PROJECT_APPS = [
     'core',
     'instagram',
     'accounts',
-]
-
-THIRD_PARTY_APPS = [
-    'rest_framework',
-    'rest_framework.authtoken',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -140,7 +140,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ],
     'PAGE_SIZE': 10,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -155,3 +156,7 @@ REST_FRAMEWORK = {
     #     'user': '3/day',
     # },
 }
+
+# JWT_AUTH = {
+#     'JWT_ALLOW_REFRESH': True,
+# }
